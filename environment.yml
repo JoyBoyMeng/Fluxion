@@ -170,5 +170,5 @@ dependencies:
     - typing-extensions==4.15.0
     - tzdata==2025.2
     - wheel==0.45.1
-prefix: /home/zhouym/.conda/envs/fluxion
+# prefix: /home/zhouym/.conda/envs/fluxion
 
