@@ -364,7 +364,7 @@ class PopGroup(torch.nn.Module):
         # # 相邻事件的时间差；负值裁剪成 0
         # dt = (t_cur - t_prev).clamp_min(0.0)  # [B_valid, N]
         ref_t = hist_time[:, 0:1]
-        t_targets = hist_time[:, :N]
+        t_targets = hist_time[:, 1:]
         dt = (ref_t - t_targets).clamp_min(0.0)  # [B_valid, N]
         # 时间编码
         time_emb = self.time_encoder_fluxion(dt)  # [B_valid, N, time_dim=D]
@@ -695,7 +695,6 @@ class FluxionLinearReduce(nn.Module):
         return self.proj(x)
 
 class TransformerEncoder(nn.Module):
-
     def __init__(self, attention_dim: int, num_heads: int, dropout: float = 0.1):
         """
         Transformer encoder.
